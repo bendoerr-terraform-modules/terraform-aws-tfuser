@@ -29,6 +29,6 @@ module "context" {
 #tfsec:ignore:aws-s3-enable-bucket-encryption
 #tfsec:ignore:aws-s3-encryption-customer-key
 module "tfstate" {
-  source  = "github.com/bendoerr-terraform-modules/terraform-aws-tfstate"
+  source  = "github.com/bendoerr-terraform-modules/terraform-aws-tfstate?ref=ea7f102ac104a23166c643c659eef45b83f980b1"
   context = module.context.shared
 }
