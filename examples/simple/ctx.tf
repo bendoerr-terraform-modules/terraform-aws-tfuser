@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 6.0"
     }
   }
 }
@@ -29,7 +29,6 @@ module "context" {
 #tfsec:ignore:aws-s3-enable-bucket-encryption
 #tfsec:ignore:aws-s3-encryption-customer-key
 module "tfstate" {
-  source  = "bendoerr-terraform-modules/tfstate/aws"
-  version = "0.3.0"
+  source  = "github.com/bendoerr-terraform-modules/terraform-aws-tfstate"
   context = module.context.shared
 }
