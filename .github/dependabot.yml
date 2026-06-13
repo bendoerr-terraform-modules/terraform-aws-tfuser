@@ -12,6 +12,8 @@ updates:
           - "patch"
     commit-message:
       prefix: "⬆️ (deps-tf):"
+    cooldown:
+      default-days: 14
 
   - package-ecosystem: "gomod"
     directory: "/test"
@@ -25,6 +27,8 @@ updates:
           - "patch"
     commit-message:
       prefix: "⬆️ (deps-test):"
+    cooldown:
+      default-days: 14
 
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -38,3 +42,5 @@ updates:
           - "patch"
     commit-message:
       prefix: "⬆️ (deps-ghaction):"
+    cooldown:
+      default-days: 14
