@@ -1,4 +1,16 @@
 data "aws_iam_policy_document" "apply_1" {
+  # acm
+  dynamic "statement" {
+    for_each = var.apply_role.acm ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "acm:*",
+      ]
+      resources = ["*"]
+    }
+  }
+
   # budgets
   dynamic "statement" {
     for_each = var.apply_role.budgets ? range(1) : []
@@ -10,6 +22,56 @@ data "aws_iam_policy_document" "apply_1" {
         "budgets:TagResource",
         "budgets:UntagResource",
         "budgets:ViewBudget",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  # cognito
+  dynamic "statement" {
+    for_each = var.apply_role.cognito ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "cognito-idp:AddCustomAttributes",
+        "cognito-idp:CreateGroup",
+        "cognito-idp:CreateIdentityProvider",
+        "cognito-idp:CreateResourceServer",
+        "cognito-idp:CreateUserPool",
+        "cognito-idp:CreateUserPoolClient",
+        "cognito-idp:CreateUserPoolDomain",
+        "cognito-idp:DeleteGroup",
+        "cognito-idp:DeleteIdentityProvider",
+        "cognito-idp:DeleteResourceServer",
+        "cognito-idp:DeleteUserPool",
+        "cognito-idp:DeleteUserPoolClient",
+        "cognito-idp:DeleteUserPoolDomain",
+        "cognito-idp:DescribeIdentityProvider",
+        "cognito-idp:DescribeResourceServer",
+        "cognito-idp:DescribeRiskConfiguration",
+        "cognito-idp:DescribeUserPool",
+        "cognito-idp:DescribeUserPoolClient",
+        "cognito-idp:DescribeUserPoolDomain",
+        "cognito-idp:GetGroup",
+        "cognito-idp:GetUICustomization",
+        "cognito-idp:GetUserPoolMfaConfig",
+        "cognito-idp:ListGroups",
+        "cognito-idp:ListIdentityProviders",
+        "cognito-idp:ListResourceServers",
+        "cognito-idp:ListTagsForResource",
+        "cognito-idp:ListUserPoolClients",
+        "cognito-idp:ListUserPools",
+        "cognito-idp:SetRiskConfiguration",
+        "cognito-idp:SetUICustomization",
+        "cognito-idp:SetUserPoolMfaConfig",
+        "cognito-idp:TagResource",
+        "cognito-idp:UntagResource",
+        "cognito-idp:UpdateGroup",
+        "cognito-idp:UpdateIdentityProvider",
+        "cognito-idp:UpdateResourceServer",
+        "cognito-idp:UpdateUserPool",
+        "cognito-idp:UpdateUserPoolClient",
+        "cognito-idp:UpdateUserPoolDomain",
       ]
       resources = ["*"]
     }
@@ -224,6 +286,7 @@ data "aws_iam_policy_document" "apply_2" {
         "iam:DeletePolicy",
         "iam:DeleteRole",
         "iam:DeleteRolePermissionsBoundary",
+        "iam:DeleteRolePolicy",
         "iam:DeleteUser",
         "iam:DetachGroupPolicy",
         "iam:DetachRolePolicy",
@@ -233,6 +296,7 @@ data "aws_iam_policy_document" "apply_2" {
         "iam:GetPolicy",
         "iam:GetPolicyVersion",
         "iam:GetRole",
+        "iam:GetRolePolicy",
         "iam:GetUser",
         "iam:ListAccessKeys",
         "iam:ListAccountAliases",
@@ -244,6 +308,7 @@ data "aws_iam_policy_document" "apply_2" {
         "iam:ListRolePolicies",
         "iam:PassRole",
         "iam:PutRolePermissionsBoundary",
+        "iam:PutRolePolicy",
         "iam:RemoveUserFromGroup",
         "iam:TagOpenIDConnectProvider",
         "iam:TagPolicy",
@@ -290,10 +355,11 @@ data "aws_iam_policy_document" "apply_2" {
         "lambda:GetFunction",
         "lambda:GetFunctionCodeSigningConfig",
         "lambda:GetPolicy",
+        "lambda:InvokeFunction",
         "lambda:ListVersionsByFunction",
         "lambda:RemovePermission",
         "lambda:TagResource",
-        "lambda:UntagResource"
+        "lambda:UntagResource",
       ]
       resources = ["*"]
     }
@@ -317,6 +383,7 @@ data "aws_iam_policy_document" "apply_2" {
         "logs:DescribeResourcePolicies",
         "logs:DescribeSubscriptionFilters",
         "logs:DisassociateKmsKey",
+        "logs:ListTagsForResource",
         "logs:ListTagsLogGroup",
         "logs:PutLogEvents",
         "logs:PutResourcePolicy",
@@ -361,6 +428,8 @@ data "aws_iam_policy_document" "apply_2" {
         "s3:CreateBucket",
         "s3:DeleteBucket",
         "s3:DeleteBucketWebsite",
+        "s3:DeleteBucketPolicy",
+        "s3:DeleteObject",
         "s3:DeleteObjectTagging",
         "s3:DeleteObjectVersionTagging",
         "s3:GetAccelerateConfiguration",
@@ -455,6 +524,76 @@ data "aws_iam_policy_document" "apply_2" {
         "ssm:GetParameters",
         "ssm:ListTagsForResource",
         "ssm:PutParameter"
+      ]
+      resources = ["*"]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "apply_3" {
+  # cloudfront
+  dynamic "statement" {
+    for_each = var.apply_role.cloudfront ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "cloudfront:AssociateAlias",
+        "cloudfront:CreateCachePolicy",
+        "cloudfront:CreateCloudFrontOriginAccessIdentity",
+        "cloudfront:CreateDistribution",
+        "cloudfront:CreateFunction",
+        "cloudfront:CreateInvalidation",
+        "cloudfront:CreateOriginAccessControl",
+        "cloudfront:CreateOriginRequestPolicy",
+        "cloudfront:CreateRealtimeLogConfig",
+        "cloudfront:CreateResponseHeadersPolicy",
+        "cloudfront:DeleteCachePolicy",
+        "cloudfront:DeleteCloudFrontOriginAccessIdentity",
+        "cloudfront:DeleteDistribution",
+        "cloudfront:DeleteFunction",
+        "cloudfront:DeleteOriginAccessControl",
+        "cloudfront:DeleteOriginRequestPolicy",
+        "cloudfront:DeleteRealtimeLogConfig",
+        "cloudfront:DeleteResponseHeadersPolicy",
+        "cloudfront:DescribeFunction",
+        "cloudfront:GetCachePolicy",
+        "cloudfront:GetCachePolicyConfig",
+        "cloudfront:GetCloudFrontOriginAccessIdentity",
+        "cloudfront:GetCloudFrontOriginAccessIdentityConfig",
+        "cloudfront:GetDistribution",
+        "cloudfront:GetDistributionConfig",
+        "cloudfront:GetFunction",
+        "cloudfront:GetInvalidation",
+        "cloudfront:GetOriginAccessControl",
+        "cloudfront:GetOriginAccessControlConfig",
+        "cloudfront:GetOriginRequestPolicy",
+        "cloudfront:GetOriginRequestPolicyConfig",
+        "cloudfront:GetResponseHeadersPolicy",
+        "cloudfront:GetResponseHeadersPolicyConfig",
+        "cloudfront:ListCachePolicies",
+        "cloudfront:ListCloudFrontOriginAccessIdentities",
+        "cloudfront:ListConflictingAliases",
+        "cloudfront:ListDistributions",
+        "cloudfront:ListFunctions",
+        "cloudfront:ListInvalidations",
+        "cloudfront:ListOriginAccessControls",
+        "cloudfront:ListOriginRequestPolicies",
+        "cloudfront:ListRealtimeLogConfigs",
+        "cloudfront:ListResponseHeadersPolicies",
+        "cloudfront:ListTagsForResource",
+        "cloudfront:ListUsages",
+        "cloudfront:PublishFunction",
+        "cloudfront:TagResource",
+        "cloudfront:TestFunction",
+        "cloudfront:UntagResource",
+        "cloudfront:UpdateCachePolicy",
+        "cloudfront:UpdateCloudFrontOriginAccessIdentity",
+        "cloudfront:UpdateDistribution",
+        "cloudfront:UpdateFunction",
+        "cloudfront:UpdateOriginAccessControl",
+        "cloudfront:UpdateOriginRequestPolicy",
+        "cloudfront:UpdateRealtimeLogConfig",
+        "cloudfront:UpdateResponseHeadersPolicy",
       ]
       resources = ["*"]
     }
