@@ -93,12 +93,14 @@ resource "aws_iam_role_policy_attachment" "apply_2" {
 }
 
 resource "aws_iam_policy" "apply_3" {
+  count  = var.apply_role.cloudfront ? 1 : 0
   name   = "${module.label_apply.id}-3"
   tags   = module.label_apply.tags
   policy = data.aws_iam_policy_document.apply_3.json
 }
 
 resource "aws_iam_role_policy_attachment" "apply_3" {
+  count      = var.apply_role.cloudfront ? 1 : 0
   role       = var.apply_role.create ? aws_iam_role.apply[0].id : data.aws_iam_role.apply[0].id
-  policy_arn = aws_iam_policy.apply_3.arn
+  policy_arn = aws_iam_policy.apply_3[0].arn
 }
