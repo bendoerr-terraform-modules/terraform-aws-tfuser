@@ -42,6 +42,7 @@ data "aws_iam_policy_document" "apply_1" {
         "cloudfront:CreateOriginAccessControl",
         "cloudfront:CreateOriginRequestPolicy",
         "cloudfront:CreateRealtimeLogConfig",
+        "cloudfront:CreateResponseHeadersPolicy",
         "cloudfront:DeleteCachePolicy",
         "cloudfront:DeleteCloudFrontOriginAccessIdentity",
         "cloudfront:DeleteDistribution",
@@ -49,6 +50,7 @@ data "aws_iam_policy_document" "apply_1" {
         "cloudfront:DeleteOriginAccessControl",
         "cloudfront:DeleteOriginRequestPolicy",
         "cloudfront:DeleteRealtimeLogConfig",
+        "cloudfront:DeleteResponseHeadersPolicy",
         "cloudfront:DescribeFunction",
         "cloudfront:GetCachePolicy",
         "cloudfront:GetCachePolicyConfig",
@@ -62,6 +64,8 @@ data "aws_iam_policy_document" "apply_1" {
         "cloudfront:GetOriginAccessControlConfig",
         "cloudfront:GetOriginRequestPolicy",
         "cloudfront:GetOriginRequestPolicyConfig",
+        "cloudfront:GetResponseHeadersPolicy",
+        "cloudfront:GetResponseHeadersPolicyConfig",
         "cloudfront:ListCachePolicies",
         "cloudfront:ListCloudFrontOriginAccessIdentities",
         "cloudfront:ListConflictingAliases",
@@ -71,6 +75,7 @@ data "aws_iam_policy_document" "apply_1" {
         "cloudfront:ListOriginAccessControls",
         "cloudfront:ListOriginRequestPolicies",
         "cloudfront:ListRealtimeLogConfigs",
+        "cloudfront:ListResponseHeadersPolicies",
         "cloudfront:ListTagsForResource",
         "cloudfront:ListUsages",
         "cloudfront:PublishFunction",
@@ -84,6 +89,7 @@ data "aws_iam_policy_document" "apply_1" {
         "cloudfront:UpdateOriginAccessControl",
         "cloudfront:UpdateOriginRequestPolicy",
         "cloudfront:UpdateRealtimeLogConfig",
+        "cloudfront:UpdateResponseHeadersPolicy",
       ]
       resources = ["*"]
     }
@@ -309,8 +315,8 @@ data "aws_iam_policy_document" "apply_2" {
         "iam:DeleteOpenIDConnectProvider",
         "iam:DeletePolicy",
         "iam:DeleteRole",
-        "iam:DeleteRolePolicy",
         "iam:DeleteRolePermissionsBoundary",
+        "iam:DeleteRolePolicy",
         "iam:DeleteUser",
         "iam:DetachGroupPolicy",
         "iam:DetachRolePolicy",
@@ -379,11 +385,11 @@ data "aws_iam_policy_document" "apply_2" {
         "lambda:GetFunction",
         "lambda:GetFunctionCodeSigningConfig",
         "lambda:GetPolicy",
+        "lambda:InvokeFunction",
         "lambda:ListVersionsByFunction",
         "lambda:RemovePermission",
         "lambda:TagResource",
         "lambda:UntagResource",
-        "lambda:InvokeFunction"
       ]
       resources = ["*"]
     }

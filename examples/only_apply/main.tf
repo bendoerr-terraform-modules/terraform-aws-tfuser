@@ -9,7 +9,10 @@ module "tfuser" {
 
   apply_role = {
     create         = true
+    acm            = true
     budgets        = true
+    cloudfront     = true
+    cognito        = true
     dynamodb       = true
     ec2_account    = true
     ec2_networking = true
