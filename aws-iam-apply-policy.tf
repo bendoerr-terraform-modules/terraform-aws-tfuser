@@ -1,4 +1,16 @@
 data "aws_iam_policy_document" "apply_1" {
+  # acm
+  dynamic "statement" {
+    for_each = var.apply_role.acm ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "acm:*",
+      ]
+      resources = ["*"]
+    }
+  }
+
   # budgets
   dynamic "statement" {
     for_each = var.apply_role.budgets ? range(1) : []
@@ -10,6 +22,80 @@ data "aws_iam_policy_document" "apply_1" {
         "budgets:TagResource",
         "budgets:UntagResource",
         "budgets:ViewBudget",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  # cloudfront
+  dynamic "statement" {
+    for_each = var.apply_role.cloudfront ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "cloudfront:AssociateAlias",
+        "cloudfront:CreateCachePolicy",
+        "cloudfront:CreateCloudFrontOriginAccessIdentity",
+        "cloudfront:CreateDistribution",
+        "cloudfront:CreateFunction",
+        "cloudfront:CreateInvalidation",
+        "cloudfront:CreateOriginAccessControl",
+        "cloudfront:CreateOriginRequestPolicy",
+        "cloudfront:CreateRealtimeLogConfig",
+        "cloudfront:DeleteCachePolicy",
+        "cloudfront:DeleteCloudFrontOriginAccessIdentity",
+        "cloudfront:DeleteDistribution",
+        "cloudfront:DeleteFunction",
+        "cloudfront:DeleteOriginAccessControl",
+        "cloudfront:DeleteOriginRequestPolicy",
+        "cloudfront:DeleteRealtimeLogConfig",
+        "cloudfront:DescribeFunction",
+        "cloudfront:GetCachePolicy",
+        "cloudfront:GetCachePolicyConfig",
+        "cloudfront:GetCloudFrontOriginAccessIdentity",
+        "cloudfront:GetCloudFrontOriginAccessIdentityConfig",
+        "cloudfront:GetDistribution",
+        "cloudfront:GetDistributionConfig",
+        "cloudfront:GetFunction",
+        "cloudfront:GetInvalidation",
+        "cloudfront:GetOriginAccessControl",
+        "cloudfront:GetOriginAccessControlConfig",
+        "cloudfront:GetOriginRequestPolicy",
+        "cloudfront:GetOriginRequestPolicyConfig",
+        "cloudfront:ListCachePolicies",
+        "cloudfront:ListCloudFrontOriginAccessIdentities",
+        "cloudfront:ListConflictingAliases",
+        "cloudfront:ListDistributions",
+        "cloudfront:ListFunctions",
+        "cloudfront:ListInvalidations",
+        "cloudfront:ListOriginAccessControls",
+        "cloudfront:ListOriginRequestPolicies",
+        "cloudfront:ListRealtimeLogConfigs",
+        "cloudfront:ListTagsForResource",
+        "cloudfront:ListUsages",
+        "cloudfront:PublishFunction",
+        "cloudfront:TagResource",
+        "cloudfront:TestFunction",
+        "cloudfront:UntagResource",
+        "cloudfront:UpdateCachePolicy",
+        "cloudfront:UpdateCloudFrontOriginAccessIdentity",
+        "cloudfront:UpdateDistribution",
+        "cloudfront:UpdateFunction",
+        "cloudfront:UpdateOriginAccessControl",
+        "cloudfront:UpdateOriginRequestPolicy",
+        "cloudfront:UpdateRealtimeLogConfig",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  # cognito
+  dynamic "statement" {
+    for_each = var.apply_role.cognito ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "cognito-idp:*",
       ]
       resources = ["*"]
     }
@@ -223,6 +309,7 @@ data "aws_iam_policy_document" "apply_2" {
         "iam:DeleteOpenIDConnectProvider",
         "iam:DeletePolicy",
         "iam:DeleteRole",
+        "iam:DeleteRolePolicy",
         "iam:DeleteRolePermissionsBoundary",
         "iam:DeleteUser",
         "iam:DetachGroupPolicy",
@@ -233,6 +320,7 @@ data "aws_iam_policy_document" "apply_2" {
         "iam:GetPolicy",
         "iam:GetPolicyVersion",
         "iam:GetRole",
+        "iam:GetRolePolicy",
         "iam:GetUser",
         "iam:ListAccessKeys",
         "iam:ListAccountAliases",
@@ -244,6 +332,7 @@ data "aws_iam_policy_document" "apply_2" {
         "iam:ListRolePolicies",
         "iam:PassRole",
         "iam:PutRolePermissionsBoundary",
+        "iam:PutRolePolicy",
         "iam:RemoveUserFromGroup",
         "iam:TagOpenIDConnectProvider",
         "iam:TagPolicy",
@@ -293,7 +382,8 @@ data "aws_iam_policy_document" "apply_2" {
         "lambda:ListVersionsByFunction",
         "lambda:RemovePermission",
         "lambda:TagResource",
-        "lambda:UntagResource"
+        "lambda:UntagResource",
+        "lambda:InvokeFunction"
       ]
       resources = ["*"]
     }
@@ -317,6 +407,7 @@ data "aws_iam_policy_document" "apply_2" {
         "logs:DescribeResourcePolicies",
         "logs:DescribeSubscriptionFilters",
         "logs:DisassociateKmsKey",
+        "logs:ListTagsForResource",
         "logs:ListTagsLogGroup",
         "logs:PutLogEvents",
         "logs:PutResourcePolicy",
@@ -361,6 +452,8 @@ data "aws_iam_policy_document" "apply_2" {
         "s3:CreateBucket",
         "s3:DeleteBucket",
         "s3:DeleteBucketWebsite",
+        "s3:DeleteBucketPolicy",
+        "s3:DeleteObject",
         "s3:DeleteObjectTagging",
         "s3:DeleteObjectVersionTagging",
         "s3:GetAccelerateConfiguration",

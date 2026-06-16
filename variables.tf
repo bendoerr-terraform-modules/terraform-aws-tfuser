@@ -99,7 +99,10 @@ variable "apply_role" {
       })))
     })))
 
+    acm            = optional(bool, false)
     budgets        = optional(bool, false)
+    cloudfront     = optional(bool, false)
+    cognito        = optional(bool, false)
     dynamodb       = optional(bool, false)
     ec2_account    = optional(bool, false)
     ec2_networking = optional(bool, false)
