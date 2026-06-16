@@ -27,74 +27,6 @@ data "aws_iam_policy_document" "apply_1" {
     }
   }
 
-  # cloudfront
-  dynamic "statement" {
-    for_each = var.apply_role.cloudfront ? range(1) : []
-    content {
-      effect = "Allow"
-      actions = [
-        "cloudfront:AssociateAlias",
-        "cloudfront:CreateCachePolicy",
-        "cloudfront:CreateCloudFrontOriginAccessIdentity",
-        "cloudfront:CreateDistribution",
-        "cloudfront:CreateFunction",
-        "cloudfront:CreateInvalidation",
-        "cloudfront:CreateOriginAccessControl",
-        "cloudfront:CreateOriginRequestPolicy",
-        "cloudfront:CreateRealtimeLogConfig",
-        "cloudfront:CreateResponseHeadersPolicy",
-        "cloudfront:DeleteCachePolicy",
-        "cloudfront:DeleteCloudFrontOriginAccessIdentity",
-        "cloudfront:DeleteDistribution",
-        "cloudfront:DeleteFunction",
-        "cloudfront:DeleteOriginAccessControl",
-        "cloudfront:DeleteOriginRequestPolicy",
-        "cloudfront:DeleteRealtimeLogConfig",
-        "cloudfront:DeleteResponseHeadersPolicy",
-        "cloudfront:DescribeFunction",
-        "cloudfront:GetCachePolicy",
-        "cloudfront:GetCachePolicyConfig",
-        "cloudfront:GetCloudFrontOriginAccessIdentity",
-        "cloudfront:GetCloudFrontOriginAccessIdentityConfig",
-        "cloudfront:GetDistribution",
-        "cloudfront:GetDistributionConfig",
-        "cloudfront:GetFunction",
-        "cloudfront:GetInvalidation",
-        "cloudfront:GetOriginAccessControl",
-        "cloudfront:GetOriginAccessControlConfig",
-        "cloudfront:GetOriginRequestPolicy",
-        "cloudfront:GetOriginRequestPolicyConfig",
-        "cloudfront:GetResponseHeadersPolicy",
-        "cloudfront:GetResponseHeadersPolicyConfig",
-        "cloudfront:ListCachePolicies",
-        "cloudfront:ListCloudFrontOriginAccessIdentities",
-        "cloudfront:ListConflictingAliases",
-        "cloudfront:ListDistributions",
-        "cloudfront:ListFunctions",
-        "cloudfront:ListInvalidations",
-        "cloudfront:ListOriginAccessControls",
-        "cloudfront:ListOriginRequestPolicies",
-        "cloudfront:ListRealtimeLogConfigs",
-        "cloudfront:ListResponseHeadersPolicies",
-        "cloudfront:ListTagsForResource",
-        "cloudfront:ListUsages",
-        "cloudfront:PublishFunction",
-        "cloudfront:TagResource",
-        "cloudfront:TestFunction",
-        "cloudfront:UntagResource",
-        "cloudfront:UpdateCachePolicy",
-        "cloudfront:UpdateCloudFrontOriginAccessIdentity",
-        "cloudfront:UpdateDistribution",
-        "cloudfront:UpdateFunction",
-        "cloudfront:UpdateOriginAccessControl",
-        "cloudfront:UpdateOriginRequestPolicy",
-        "cloudfront:UpdateRealtimeLogConfig",
-        "cloudfront:UpdateResponseHeadersPolicy",
-      ]
-      resources = ["*"]
-    }
-  }
-
   # cognito
   dynamic "statement" {
     for_each = var.apply_role.cognito ? range(1) : []
@@ -592,6 +524,76 @@ data "aws_iam_policy_document" "apply_2" {
         "ssm:GetParameters",
         "ssm:ListTagsForResource",
         "ssm:PutParameter"
+      ]
+      resources = ["*"]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "apply_3" {
+  # cloudfront
+  dynamic "statement" {
+    for_each = var.apply_role.cloudfront ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "cloudfront:AssociateAlias",
+        "cloudfront:CreateCachePolicy",
+        "cloudfront:CreateCloudFrontOriginAccessIdentity",
+        "cloudfront:CreateDistribution",
+        "cloudfront:CreateFunction",
+        "cloudfront:CreateInvalidation",
+        "cloudfront:CreateOriginAccessControl",
+        "cloudfront:CreateOriginRequestPolicy",
+        "cloudfront:CreateRealtimeLogConfig",
+        "cloudfront:CreateResponseHeadersPolicy",
+        "cloudfront:DeleteCachePolicy",
+        "cloudfront:DeleteCloudFrontOriginAccessIdentity",
+        "cloudfront:DeleteDistribution",
+        "cloudfront:DeleteFunction",
+        "cloudfront:DeleteOriginAccessControl",
+        "cloudfront:DeleteOriginRequestPolicy",
+        "cloudfront:DeleteRealtimeLogConfig",
+        "cloudfront:DeleteResponseHeadersPolicy",
+        "cloudfront:DescribeFunction",
+        "cloudfront:GetCachePolicy",
+        "cloudfront:GetCachePolicyConfig",
+        "cloudfront:GetCloudFrontOriginAccessIdentity",
+        "cloudfront:GetCloudFrontOriginAccessIdentityConfig",
+        "cloudfront:GetDistribution",
+        "cloudfront:GetDistributionConfig",
+        "cloudfront:GetFunction",
+        "cloudfront:GetInvalidation",
+        "cloudfront:GetOriginAccessControl",
+        "cloudfront:GetOriginAccessControlConfig",
+        "cloudfront:GetOriginRequestPolicy",
+        "cloudfront:GetOriginRequestPolicyConfig",
+        "cloudfront:GetResponseHeadersPolicy",
+        "cloudfront:GetResponseHeadersPolicyConfig",
+        "cloudfront:ListCachePolicies",
+        "cloudfront:ListCloudFrontOriginAccessIdentities",
+        "cloudfront:ListConflictingAliases",
+        "cloudfront:ListDistributions",
+        "cloudfront:ListFunctions",
+        "cloudfront:ListInvalidations",
+        "cloudfront:ListOriginAccessControls",
+        "cloudfront:ListOriginRequestPolicies",
+        "cloudfront:ListRealtimeLogConfigs",
+        "cloudfront:ListResponseHeadersPolicies",
+        "cloudfront:ListTagsForResource",
+        "cloudfront:ListUsages",
+        "cloudfront:PublishFunction",
+        "cloudfront:TagResource",
+        "cloudfront:TestFunction",
+        "cloudfront:UntagResource",
+        "cloudfront:UpdateCachePolicy",
+        "cloudfront:UpdateCloudFrontOriginAccessIdentity",
+        "cloudfront:UpdateDistribution",
+        "cloudfront:UpdateFunction",
+        "cloudfront:UpdateOriginAccessControl",
+        "cloudfront:UpdateOriginRequestPolicy",
+        "cloudfront:UpdateRealtimeLogConfig",
+        "cloudfront:UpdateResponseHeadersPolicy",
       ]
       resources = ["*"]
     }

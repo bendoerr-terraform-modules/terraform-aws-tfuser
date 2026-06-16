@@ -93,18 +93,21 @@ resources which have no cost.
 | [aws_iam_access_key.backend](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key)                                  | resource    |
 | [aws_iam_policy.apply_1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                                          | resource    |
 | [aws_iam_policy.apply_2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                                          | resource    |
+| [aws_iam_policy.apply_3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                                          | resource    |
 | [aws_iam_policy.backend_dynamodb_rw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                              | resource    |
 | [aws_iam_policy.backend_s3_rw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                                    | resource    |
 | [aws_iam_role.apply](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)                                                | resource    |
 | [aws_iam_role.backend](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)                                              | resource    |
 | [aws_iam_role_policy_attachment.apply_1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment)          | resource    |
 | [aws_iam_role_policy_attachment.apply_2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment)          | resource    |
+| [aws_iam_role_policy_attachment.apply_3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment)          | resource    |
 | [aws_iam_role_policy_attachment.backend_dynamodb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource    |
 | [aws_iam_role_policy_attachment.backend_s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment)       | resource    |
 | [aws_iam_user.apply](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user)                                                | resource    |
 | [aws_iam_user.backend](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user)                                              | resource    |
 | [aws_iam_policy_document.apply_1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)                     | data source |
 | [aws_iam_policy_document.apply_2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)                     | data source |
+| [aws_iam_policy_document.apply_3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)                     | data source |
 | [aws_iam_policy_document.apply_assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)           | data source |
 | [aws_iam_policy_document.backend_assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)         | data source |
 | [aws_iam_policy_document.backend_dynamodb_rw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)         | data source |
