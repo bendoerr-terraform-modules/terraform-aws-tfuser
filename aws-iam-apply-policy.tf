@@ -11,6 +11,22 @@ data "aws_iam_policy_document" "apply_1" {
     }
   }
 
+  # apigateway
+  dynamic "statement" {
+    for_each = var.apply_role.apigateway ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "apigateway:DELETE",
+        "apigateway:GET",
+        "apigateway:PATCH",
+        "apigateway:POST",
+        "apigateway:PUT",
+      ]
+      resources = ["*"]
+    }
+  }
+
   # budgets
   dynamic "statement" {
     for_each = var.apply_role.budgets ? range(1) : []
@@ -187,6 +203,7 @@ data "aws_iam_policy_document" "apply_1" {
         "ec2:DisassociateRouteTable",
         "ec2:DisassociateVpcCidrBlock",
         "ec2:EnableVgwRoutePropagation",
+        "ec2:ModifySubnetAttribute",
         "ec2:ModifyVpcAttribute",
         "ec2:ReleaseAddress",
         "ec2:RevokeSecurityGroupEgress",
@@ -225,6 +242,7 @@ data "aws_iam_policy_document" "apply_1" {
         "ecs:DescribeTaskDefinition",
         "ecs:ListAccountSettings",
         "ecs:PutAccountSettingDefault",
+        "ecs:PutClusterCapacityProviders",
         "ecs:RegisterTaskDefinition",
         "ecs:TagResource",
         "ecs:UntagResource",
