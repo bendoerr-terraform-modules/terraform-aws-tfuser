@@ -10,6 +10,7 @@ module "tfuser" {
   apply_role = {
     create         = true
     acm            = true
+    apigateway     = true
     budgets        = true
     cloudfront     = true
     cognito        = true
