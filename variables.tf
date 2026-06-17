@@ -100,6 +100,7 @@ variable "apply_role" {
     })))
 
     acm            = optional(bool, false)
+    apigateway     = optional(bool, false)
     budgets        = optional(bool, false)
     cloudfront     = optional(bool, false)
     cognito        = optional(bool, false)
