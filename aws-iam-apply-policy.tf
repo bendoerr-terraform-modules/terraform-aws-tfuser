@@ -50,6 +50,8 @@ data "aws_iam_policy_document" "apply_1" {
       effect = "Allow"
       actions = [
         "cognito-idp:AddCustomAttributes",
+        "cognito-idp:AdminCreateUser",
+        "cognito-idp:AdminSetUserPassword",
         "cognito-idp:CreateGroup",
         "cognito-idp:CreateIdentityProvider",
         "cognito-idp:CreateResourceServer",
@@ -71,6 +73,7 @@ data "aws_iam_policy_document" "apply_1" {
         "cognito-idp:GetGroup",
         "cognito-idp:GetUICustomization",
         "cognito-idp:GetUserPoolMfaConfig",
+        "cognito-idp:InitiateAuth",
         "cognito-idp:ListGroups",
         "cognito-idp:ListIdentityProviders",
         "cognito-idp:ListResourceServers",
