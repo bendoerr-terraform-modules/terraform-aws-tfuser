@@ -325,6 +325,7 @@ data "aws_iam_policy_document" "apply_2" {
         "iam:ListAttachedRolePolicies",
         "iam:ListGroupsForUser",
         "iam:ListInstanceProfilesForRole",
+        "iam:ListOpenIDConnectProviders",
         "iam:ListPolicyVersions",
         "iam:ListRolePolicies",
         "iam:PassRole",
