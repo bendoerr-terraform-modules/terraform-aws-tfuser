@@ -108,10 +108,10 @@ will find a compatible version automatically.
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| <a name="module_label_apply"></a> [label_apply](#module_label_apply) | bendoerr-terraform-modules/label/null | 1.0.0 |
-| <a name="module_label_backend"></a> [label_backend](#module_label_backend) | bendoerr-terraform-modules/label/null | 1.0.0 |
-| <a name="module_label_backend_dynamodb_rw"></a> [label_backend_dynamodb_rw](#module_label_backend_dynamodb_rw) | bendoerr-terraform-modules/label/null | 1.0.0 |
-| <a name="module_label_backend_s3_rw"></a> [label_backend_s3_rw](#module_label_backend_s3_rw) | bendoerr-terraform-modules/label/null | 1.0.0 |
+| <a name="module_label_apply"></a> [label_apply](#module_label_apply) | bendoerr-terraform-modules/label/null | 1.0.1 |
+| <a name="module_label_backend"></a> [label_backend](#module_label_backend) | bendoerr-terraform-modules/label/null | 1.0.1 |
+| <a name="module_label_backend_dynamodb_rw"></a> [label_backend_dynamodb_rw](#module_label_backend_dynamodb_rw) | bendoerr-terraform-modules/label/null | 1.0.1 |
+| <a name="module_label_backend_s3_rw"></a> [label_backend_s3_rw](#module_label_backend_s3_rw) | bendoerr-terraform-modules/label/null | 1.0.1 |
 
 ### Resources
 
