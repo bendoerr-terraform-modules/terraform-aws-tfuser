@@ -95,7 +95,7 @@ will find a compatible version automatically.
 
 | Name | Version |
 | ---- | ------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 0.13 |
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 0.13.0 |
 | <a name="requirement_aws"></a> [aws](#requirement_aws) | ~> 6.9 |
 
 ### Providers
