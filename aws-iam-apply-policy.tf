@@ -568,6 +568,7 @@ data "aws_iam_policy_document" "apply_3" {
         "backup:DeleteBackupVault",
         "backup:DeleteRecoveryPoint",
         "backup:DescribeBackupVault",
+        "backup:DescribeRecoveryPoint",
         "backup:GetBackupPlan",
         "backup:GetBackupSelection",
         "backup:ListBackupSelections",
