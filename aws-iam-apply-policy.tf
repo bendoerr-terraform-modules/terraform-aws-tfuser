@@ -570,6 +570,7 @@ data "aws_iam_policy_document" "apply_3" {
         "backup:DescribeBackupVault",
         "backup:GetBackupPlan",
         "backup:GetBackupSelection",
+        "backup:ListBackupSelections",
         "backup:ListRecoveryPointsByBackupVault",
         "backup:ListTags",
         "backup:TagResource",
