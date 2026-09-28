@@ -553,6 +553,33 @@ data "aws_iam_policy_document" "apply_2" {
 }
 
 data "aws_iam_policy_document" "apply_3" {
+  # backup
+  dynamic "statement" {
+    for_each = var.apply_role.backup ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "backup-storage:MountCapsule",
+        "backup:CreateBackupPlan",
+        "backup:CreateBackupSelection",
+        "backup:CreateBackupVault",
+        "backup:DeleteBackupPlan",
+        "backup:DeleteBackupSelection",
+        "backup:DeleteBackupVault",
+        "backup:DeleteRecoveryPoint",
+        "backup:DescribeBackupVault",
+        "backup:GetBackupPlan",
+        "backup:GetBackupSelection",
+        "backup:ListRecoveryPointsByBackupVault",
+        "backup:ListTags",
+        "backup:TagResource",
+        "backup:UntagResource",
+        "backup:UpdateBackupPlan",
+      ]
+      resources = ["*"]
+    }
+  }
+
   # cloudfront
   dynamic "statement" {
     for_each = var.apply_role.cloudfront ? range(1) : []
@@ -616,6 +643,24 @@ data "aws_iam_policy_document" "apply_3" {
         "cloudfront:UpdateOriginRequestPolicy",
         "cloudfront:UpdateRealtimeLogConfig",
         "cloudfront:UpdateResponseHeadersPolicy",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  # cloudwatch
+  dynamic "statement" {
+    for_each = var.apply_role.cloudwatch ? range(1) : []
+    content {
+      effect = "Allow"
+      actions = [
+        "cloudwatch:DeleteAlarms",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:DescribeAlarmsForMetric",
+        "cloudwatch:ListTagsForResource",
+        "cloudwatch:PutMetricAlarm",
+        "cloudwatch:TagResource",
+        "cloudwatch:UntagResource",
       ]
       resources = ["*"]
     }
