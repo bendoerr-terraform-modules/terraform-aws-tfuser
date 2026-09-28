@@ -101,8 +101,10 @@ variable "apply_role" {
 
     acm            = optional(bool, false)
     apigateway     = optional(bool, false)
+    backup         = optional(bool, false)
     budgets        = optional(bool, false)
     cloudfront     = optional(bool, false)
+    cloudwatch     = optional(bool, false)
     cognito        = optional(bool, false)
     dynamodb       = optional(bool, false)
     ec2_account    = optional(bool, false)
