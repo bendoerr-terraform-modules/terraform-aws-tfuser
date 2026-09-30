@@ -93,12 +93,22 @@ data "aws_iam_policy_document" "backend_s3_rw" {
     actions = [
       "s3:GetObject",
       "s3:PutObject",
-      # S3 native state locking (backend `use_lockfile = true`) releases its lock by
-      # deleting the `<key>.tflock` object; without this a lock is taken and never freed.
-      "s3:DeleteObject",
     ]
     # tfsec:ignore:aws-iam-no-policy-wildcards
     resources = ["${var.backend_role.s3_policy.bucket_arn}/*"]
+  }
+
+  # S3 native state locking (backend `use_lockfile = true`) releases its lock by deleting
+  # `<state key>.tflock`. Scoped to lock files only: DeleteObject on `/*` would also let the
+  # role delete any stack's state object (`terraform workspace delete`).
+  statement {
+    sid    = replace("${module.label_backend_s3_rw[0].id}-3", "-", "")
+    effect = "Allow"
+    actions = [
+      "s3:DeleteObject",
+    ]
+    # tfsec:ignore:aws-iam-no-policy-wildcards
+    resources = ["${var.backend_role.s3_policy.bucket_arn}/*.tflock"]
   }
 
   dynamic "statement" {
