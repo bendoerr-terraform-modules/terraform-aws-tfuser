@@ -93,6 +93,9 @@ data "aws_iam_policy_document" "backend_s3_rw" {
     actions = [
       "s3:GetObject",
       "s3:PutObject",
+      # S3 native state locking (backend `use_lockfile = true`) releases its lock by
+      # deleting the `<key>.tflock` object; without this a lock is taken and never freed.
+      "s3:DeleteObject",
     ]
     # tfsec:ignore:aws-iam-no-policy-wildcards
     resources = ["${var.backend_role.s3_policy.bucket_arn}/*"]
