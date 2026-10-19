@@ -102,7 +102,7 @@ will find a compatible version automatically.
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_aws"></a> [aws](#provider_aws) | 6.66.0 |
+| <a name="provider_aws"></a> [aws](#provider_aws) | 6.69.1 |
 
 ### Modules
 
